@@ -61,18 +61,16 @@ POST/PATCH body: `{ name, flavor, quantity, cookieJarId }`
 
 POST/PATCH body: `{ name }`
 
-## Auth header
+## main flow:
+User signs up
+-> password hashed
+-> user saved in database
 
-```
-Authorization: Bearer <access_token>
-```
+User logs in
+-> password checked
+-> token returned
 
-Tokens expire after 24 hours.
-
-## Tests
-
-```bash
-npm test           # unit tests
-npm run test:e2e   # e2e tests
-npm run test:cov   # with coverage
-```
+User accesses 
+-> checks token
+-> checks permissions
+-> handles request
